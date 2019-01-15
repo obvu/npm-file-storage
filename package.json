@@ -1,5 +1,5 @@
 {
-  "name": "file-storage",
+  "name": "obvu-file-storage",
   "version": "1.0.1",
   "description": "Obvu file storage handler",
   "main": "index.js",
