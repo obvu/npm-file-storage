@@ -1,4 +1,4 @@
-export default {
+var a  = {
   baseUrl: null,
   getFileUrl (file, w, h, options) {
     let id = null
@@ -28,3 +28,6 @@ export default {
     return query
   }
 }
+
+
+module.exports = a
