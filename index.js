@@ -3,7 +3,7 @@ var a  = {
   getFileUrl (file, w, h, options) {
     let id = null
     if (!file) return '/img/placeholders/workspace.png'
-    if (file[0] !== null) {
+    if (Array.isArray(file) && file[0] !== null) {
       id = file[0]
     }
     if (!id)
