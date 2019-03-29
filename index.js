@@ -16,7 +16,6 @@ var a = {
     return this.getUrlByOptions(options)
   },
   cFile (fileObject, w, h, options) {
-    console.log(fileObject)
     let re = /(?:\.([^.]+))?$/
     let ext = re.exec(fileObject.fullUrl)[1]
     let transformFormats = ['jpg', 'pjpg', 'png', 'jpeg']
