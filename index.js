@@ -41,7 +41,6 @@ var a = {
   getNewFormatOptions (params) {
     let currentOptions = { ...params }
     let s = currentOptions.id + '/'
-    // '365/w_100_h_40_image.jpg'
     delete currentOptions.id
     let fm = currentOptions.fm || 'jpg'
     delete currentOptions.fm
