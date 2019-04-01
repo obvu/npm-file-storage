@@ -47,6 +47,7 @@ var a = {
     let optionsStrings = []
     let strings = Object.keys(currentOptions)
     for (var i = 0; i < strings.length; i++) {
+      let key = strings[i]
       let value = currentOptions[key]
       if (value)
         optionsStrings.push(key + '_' + value)
