@@ -1,6 +1,6 @@
 var a = {
   baseUrl: null,
-  getFileUrl (file, w, h, options) {
+  getFileUrl: function (file, w, h, options) {
     let id = null
     if (!file) return '/img/placeholders/workspace.png'
     if (Array.isArray(file) && file[0] !== null) {
@@ -15,7 +15,7 @@ var a = {
     options.id = id
     return this.getUrlByOptions(options)
   },
-  cFile (fileObject, w, h, options) {
+  cFile: function (fileObject, w, h, options) {
     let re = /(?:\.([^.]+))?$/
     let ext = re.exec(fileObject.fullUrl)[1]
     let transformFormats = ['jpg', 'pjpg', 'png', 'jpeg']
@@ -28,40 +28,43 @@ var a = {
         delete options.q
       }
       options.id = fileObject.fileId
-      return this.getCUrlByOptions(options);
+      return this.getCUrlByOptions(options)
     }
     return fileObject.fullUrl
   },
-  getUrlByOptions (options) {
+  getUrlByOptions: function (options) {
     return this.baseUrl + 'fileStorage/glide?' + this.getQueryString(options)
   },
-  getCUrlByOptions (options) {
+  getCUrlByOptions: function (options) {
     return this.baseUrl + 'storage/glideCache/1/' + this.getNewFormatOptions(options)
   },
-  getNewFormatOptions (params) {
-    let currentOptions = { ...params }
+  getNewFormatOptions: function (params) {
+    let currentOptions = Object.assign({}, params)
     let s = currentOptions.id + '/'
     delete currentOptions.id
     let fm = currentOptions.fm || 'jpg'
     delete currentOptions.fm
     let optionsStrings = []
-    Object.keys(currentOptions)
-      .filter(key => !!currentOptions[key])
-      .forEach(key => {
-        let value = currentOptions[key]
+    let strings = Object.keys(currentOptions)
+    for (var i = 0; i < strings.length; i++) {
+      let value = currentOptions[key]
+      if (value)
         optionsStrings.push(key + '_' + value)
-      })
+    }
     s += optionsStrings.join('__') + '_image.' + fm
     return s
   },
-  getQueryString (params) {
+  getQueryString: function (params) {
     var esc = encodeURIComponent
-    var query = Object.keys(params)
-      .filter(v => !!params[v])
-      .map(k => esc(k) + '=' + esc(params[k]))
-      .join('&')
+    let strings = Object.keys(params)
+    let optionsStrings = []
+    for (var i = 0; i < strings.length; i++) {
+      let value = params[key]
+      if (value)
+        optionsStrings.push(esc(key) + '=' + esc(value))
+    }
 
-    return query
+    return optionsStrings.join('&')
   }
 }
 
