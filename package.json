@@ -1,6 +1,6 @@
 {
   "name": "obvu-file-storage",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Obvu file storage handler",
   "main": "index.js",
   "scripts": {

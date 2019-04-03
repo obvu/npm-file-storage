@@ -63,6 +63,7 @@ var a = {
     let strings = Object.keys(params)
     let optionsStrings = []
     for (var i = 0; i < strings.length; i++) {
+      let key = strings[i]
       let value = params[key]
       if (value)
         optionsStrings.push(esc(key) + '=' + esc(value))
